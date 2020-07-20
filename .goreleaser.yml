@@ -1,0 +1,39 @@
+env:
+  - GO111MODULE=on
+  - GOPROXY=https://goproxy.io
+
+before:
+  hooks:
+    - go mod download
+
+builds:
+  -
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - darwin
+      - freebsd
+      - linux
+      - netbsd
+      - openbsd
+      - windows
+      - android
+    goarch:
+      - 386
+      - amd64
+
+archives:
+  -
+    replacements:
+      386: i386
+      amd64: x86_64
+    format_overrides:
+      - goos: windows
+        format: zip
+    files:
+      - ip.txt
+      - README.md
+      - config.json
+
+checksum:
+  name_template: 'checksums.txt'
