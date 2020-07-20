@@ -21,6 +21,10 @@ builds:
       - amd64
       - arm
       - arm64
+      - mips
+      - mips64
+      - mipsle
+      - mips64le
 
 archives:
   -
